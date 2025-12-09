@@ -49,6 +49,10 @@ export async function buildSpessaSynth() {
         path.resolve(DEMO_DIR, "index.html")
     );
     await fs.cp(
+        path.resolve(WEBSITE_DIR, "html/player.html"),
+        path.resolve(DEMO_DIR, "player.html")
+    );
+    await fs.cp(
         path.resolve(WEBSITE_DIR, "html/local_edition_index.html"),
         path.resolve(LOCAL_DIR, "local_edition_index.html")
     );
@@ -86,6 +90,7 @@ export async function buildSpessaSynth() {
     printStep("️⚙️  3) Build");
 
     const demoInput = path.resolve(WEBSITE_DIR, "js/main/demo_main.ts");
+    const playerInput = path.resolve(WEBSITE_DIR, "js/main/player_main.ts");
     const localInput = path.resolve(WEBSITE_DIR, "js/main/local_main.ts");
     const serverInput = path.resolve(WEBSITE_DIR, "server/server.ts");
     const stylesInput = path.resolve(WEBSITE_DIR, "css/style.css");
@@ -107,6 +112,15 @@ export async function buildSpessaSynth() {
         splitting: true,
         ...regularOptions,
         outdir: DEMO_DIR_SRC,
+        logLevel: "info"
+    });
+
+    print("Building player...");
+    await esbuild.build({
+        plugins: [metaUrlPlugin()],
+        entryPoints: [playerInput],
+        ...regularOptions,
+        outfile: path.resolve(DEMO_DIR_SRC, "player_main.js"),
         logLevel: "info"
     });
 
