@@ -9,8 +9,8 @@ async function initialize() {
     const manager = new Manager(context, soundFontBuffer);
     await manager.ready;
 
-    const fileInput = document.getElementById("midi_file_input");
-    const sfInput = document.getElementById("sf_file_input");
+    const fileInput = document.getElementById("midi_file_input") as HTMLInputElement;
+    const sfInput = document.getElementById("sf_file_input") as HTMLInputElement;
 
     fileInput.onchange = async () => {
         if (fileInput.files.length > 0) {
@@ -31,4 +31,4 @@ async function initialize() {
     };
 }
 
-initialize();
+void initialize();
