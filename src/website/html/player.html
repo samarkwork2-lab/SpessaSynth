@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SpessaSynth MIDI Player</title>
+    <link href='./minified/style.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="spessasynth_main">
+        <div id="synthetizer_controls"></div>
+        <div id="title_wrapper">
+            <h1 id="title">MIDI Player</h1>
+            <div class="midi_and_sf_controller">
+                <label for="midi_file_input" id="file_upload">Upload your MIDI files</label>
+                <input accept=".mid, .smf, .rmi, audio/midi, .kar, .xmf, .mxmf" id="midi_file_input" multiple
+                       type="file"><br />
+                <label id="sf_upload"> <span>Upload the soundfont</span>
+                    <input accept=".sf2,.sf3,.sfogg,.dls,.dlp" id="sf_file_input" type="file"><br />
+                </label>
+            </div>
+        </div>
+        <div id="keyboard_canvas_wrapper">
+            <canvas id="note_canvas"></canvas>
+            <div id="keyboard"></div>
+        </div>
+        <div id="player_info"></div>
+        <div class="bottom_part">
+            <div id="sequencer_controls"></div>
+        </div>
+    </div>
+    <script src="./minified/player_main.js" type="module"></script>
+</body>
+</html>
