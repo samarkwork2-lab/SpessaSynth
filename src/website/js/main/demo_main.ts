@@ -343,7 +343,6 @@ if (savedVoiceCap) {
 }
 window.rememberVoiceCap = (cap: number) => {
     localStorage.setItem("spessasynth-voice-cap", cap.toString());
-    window.location.reload();
 };
 
 // INIT STARTS HERE
